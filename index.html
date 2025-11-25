@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm & Orchard Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-seedling"></i>
+                <span>FarmManager Pro</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#crops" class="nav-link">Crops</a></li>
+                <li><a href="#inventory" class="nav-link">Inventory</a></li>
+                <li><a href="#analytics" class="nav-link">Analytics</a></li>
+                <li><a href="#weather" class="nav-link">Weather</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Farm Operations</h1>
+                <p class="hero-subtitle">Comprehensive digital platform for managing, monitoring, and optimizing every aspect of your agricultural operations</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showDashboard()">Get Started</button>
+                    <button class="btn btn-secondary" onclick="scrollToFeatures()">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-graphic">
+                    <i class="fas fa-tractor"></i>
+                    <i class="fas fa-apple-alt"></i>
+                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Farm Management</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Track crop health, soil conditions, and equipment status with live data feeds and automated alerts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Crop Management</h3>
+                    <p>Plan planting schedules, track growth stages, and optimize harvest timing for maximum yield.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>Weather Integration</h3>
+                    <p>Access accurate weather forecasts and historical data to make informed farming decisions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Inventory Tracking</h3>
+                    <p>Manage seeds, fertilizers, equipment, and supplies with automated reorder notifications.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Financial Analytics</h3>
+                    <p>Track costs, revenues, and profitability with detailed financial reports and insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Access</h3>
+                    <p>Access your farm data anywhere with our responsive mobile interface for field operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2 class="section-title">Farm Dashboard</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Field Status</h3>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="status-label">Field A</span>
+                            <span class="status-value healthy">Healthy</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Field B</span>
+                            <span class="status-value warning">Needs Water</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Field C</span>
+                            <span class="status-value healthy">Ready for Harvest</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Weather Forecast</h3>
+                    <div class="weather-widget">
+                        <div class="weather-today">
+                            <i class="fas fa-sun"></i>
+                            <span class="temp">24°C</span>
+                            <span class="condition">Sunny</span>
+                        </div>
+                        <div class="weather-forecast">
+                            <div class="forecast-item">
+                                <span>Tomorrow</span>
+                                <i class="fas fa-cloud-rain"></i>
+                                <span>18°C</span>
+                            </div>
+                            <div class="forecast-item">
+                                <span>Day After</span>
+                                <i class="fas fa-cloud-sun"></i>
+                                <span>22°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Yield Prediction</h3>
+                    <canvas id="yieldChart" width="300" height="200"></canvas>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Recent Activities</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-seedling"></i>
+                            <div class="activity-content">
+                                <span class="activity-title">Corn planted in Field A</span>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-tint"></i>
+                            <div class="activity-content">
+                                <span class="activity-title">Irrigation system activated</span>
+                                <span class="activity-time">4 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-tractor"></i>
+                            <div class="activity-content">
+                                <span class="activity-title">Tractor maintenance completed</span>
+                                <span class="activity-time">1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crops Management Section -->
+    <section id="crops" class="crops-section">
+        <div class="container">
+            <h2 class="section-title">Crop Management</h2>
+            <div class="crops-grid">
+                <div class="crop-card">
+                    <div class="crop-header">
+                        <h3>Corn Field A</h3>
+                        <span class="crop-status healthy">Growing</span>
+                    </div>
+                    <div class="crop-details">
+                        <div class="detail-item">
+                            <span class="label">Planting Date:</span>
+                            <span class="value">March 15, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Growth Stage:</span>
+                            <span class="value">Vegetative (V6)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Expected Harvest:</span>
+                            <span class="value">August 20, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Soil Moisture:</span>
+                            <span class="value">65%</span>
+                        </div>
+                    </div>
+                    <div class="crop-actions">
+                        <button class="btn btn-small">View Details</button>
+                        <button class="btn btn-small btn-secondary">Add Note</button>
+                    </div>
+                </div>
+
+                <div class="crop-card">
+                    <div class="crop-header">
+                        <h3>Apple Orchard</h3>
+                        <span class="crop-status warning">Flowering</span>
+                    </div>
+                    <div class="crop-details">
+                        <div class="detail-item">
+                            <span class="label">Variety:</span>
+                            <span class="value">Gala Apples</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Trees:</span>
+                            <span class="value">150 trees</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Expected Harvest:</span>
+                            <span class="value">September 15, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Pest Alert:</span>
+                            <span class="value">Monitor aphids</span>
+                        </div>
+                    </div>
+                    <div class="crop-actions">
+                        <button class="btn btn-small">View Details</button>
+                        <button class="btn btn-small btn-secondary">Schedule Spray</button>
+                    </div>
+                </div>
+
+                <div class="crop-card">
+                    <div class="crop-header">
+                        <h3>Tomato Greenhouse</h3>
+                        <span class="crop-status healthy">Fruiting</span>
+                    </div>
+                    <div class="crop-details">
+                        <div class="detail-item">
+                            <span class="label">Variety:</span>
+                            <span class="value">Cherry Tomatoes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Plants:</span>
+                            <span class="value">200 plants</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Harvest Started:</span>
+                            <span class="value">June 1, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Daily Yield:</span>
+                            <span class="value">45 lbs</span>
+                        </div>
+                    </div>
+                    <div class="crop-actions">
+                        <button class="btn btn-small">View Details</button>
+                        <button class="btn btn-small btn-secondary">Record Harvest</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inventory Section -->
+    <section id="inventory" class="inventory-section">
+        <div class="container">
+            <h2 class="section-title">Inventory Management</h2>
+            <div class="inventory-tabs">
+                <button class="tab-btn active" onclick="showInventoryTab('seeds')">Seeds & Plants</button>
+                <button class="tab-btn" onclick="showInventoryTab('fertilizers')">Fertilizers</button>
+                <button class="tab-btn" onclick="showInventoryTab('equipment')">Equipment</button>
+                <button class="tab-btn" onclick="showInventoryTab('supplies')">Supplies</button>
+            </div>
+            
+            <div id="seeds" class="inventory-content active">
+                <div class="inventory-grid">
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>Corn Seeds</h4>
+                            <span class="stock-level low">Low Stock</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Quantity: 15 bags</p>
+                            <p>Last Ordered: March 1, 2024</p>
+                            <p>Next Order Due: July 15, 2024</p>
+                        </div>
+                        <button class="btn btn-small">Reorder</button>
+                    </div>
+                    
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>Tomato Seedlings</h4>
+                            <span class="stock-level good">Good Stock</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Quantity: 50 trays</p>
+                            <p>Last Ordered: May 20, 2024</p>
+                            <p>Next Order Due: August 1, 2024</p>
+                        </div>
+                        <button class="btn btn-small">Reorder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="analytics-section">
+        <div class="container">
+            <h2 class="section-title">Farm Analytics</h2>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Revenue Trends</h3>
+                    <canvas id="revenueChart" width="400" height="300"></canvas>
+                </div>
+                <div class="analytics-card">
+                    <h3>Cost Analysis</h3>
+                    <canvas id="costChart" width="400" height="300"></canvas>
+                </div>
+                <div class="analytics-card">
+                    <h3>Yield Comparison</h3>
+                    <canvas id="yieldComparisonChart" width="400" height="300"></canvas>
+                </div>
+                <div class="analytics-card">
+                    <h3>Key Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">Total Revenue</span>
+                            <span class="metric-value">$125,400</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Total Costs</span>
+                            <span class="metric-value">$78,200</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Net Profit</span>
+                            <span class="metric-value">$47,200</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">ROI</span>
+                            <span class="metric-value">60.4%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weather" class="weather-section">
+        <div class="container">
+            <h2 class="section-title">Weather Monitoring</h2>
+            <div class="weather-grid">
+                <div class="weather-card">
+                    <h3>Current Conditions</h3>
+                    <div class="current-weather">
+                        <div class="weather-main">
+                            <i class="fas fa-sun"></i>
+                            <div class="weather-info">
+                                <span class="temperature">24°C</span>
+                                <span class="condition">Sunny</span>
+                            </div>
+                        </div>
+                        <div class="weather-details">
+                            <div class="detail">
+                                <span class="label">Humidity:</span>
+                                <span class="value">65%</span>
+                            </div>
+                            <div class="detail">
+                                <span class="label">Wind Speed:</span>
+                                <span class="value">12 km/h</span>
+                            </div>
+                            <div class="detail">
+                                <span class="label">Pressure:</span>
+                                <span class="value">1013 hPa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-card">
+                    <h3>7-Day Forecast</h3>
+                    <div class="forecast-list">
+                        <div class="forecast-day">
+                            <span class="day">Today</span>
+                            <i class="fas fa-sun"></i>
+                            <span class="temp-high">26°</span>
+                            <span class="temp-low">18°</span>
+                        </div>
+                        <div class="forecast-day">
+                            <span class="day">Tomorrow</span>
+                            <i class="fas fa-cloud-rain"></i>
+                            <span class="temp-high">22°</span>
+                            <span class="temp-low">15°</span>
+                        </div>
+                        <div class="forecast-day">
+                            <span class="day">Wednesday</span>
+                            <i class="fas fa-cloud-sun"></i>
+                            <span class="temp-high">24°</span>
+                            <span class="temp-low">16°</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-card">
+                    <h3>Soil Moisture</h3>
+                    <div class="soil-moisture">
+                        <div class="moisture-item">
+                            <span class="field">Field A</span>
+                            <div class="moisture-bar">
+                                <div class="moisture-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="percentage">65%</span>
+                        </div>
+                        <div class="moisture-item">
+                            <span class="field">Field B</span>
+                            <div class="moisture-bar">
+                                <div class="moisture-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="percentage">45%</span>
+                        </div>
+                        <div class="moisture-item">
+                            <span class="field">Field C</span>
+                            <div class="moisture-bar">
+                                <div class="moisture-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="percentage">80%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FarmManager Pro</h3>
+                    <p>Comprehensive digital platform for modern agriculture</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#crops">Crop Management</a></li>
+                        <li><a href="#inventory">Inventory</a></li>
+                        <li><a href="#analytics">Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FarmManager Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
