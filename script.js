@@ -76,6 +76,7 @@ function initializeCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                aspectRatio: 2,
                 plugins: {
                     legend: {
                         display: false
@@ -115,6 +116,7 @@ function initializeCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                aspectRatio: 1.5,
                 plugins: {
                     legend: {
                         display: false
@@ -159,12 +161,16 @@ function initializeCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                aspectRatio: 1,
                 plugins: {
                     legend: {
                         position: 'bottom',
                         labels: {
-                            padding: 20,
-                            usePointStyle: true
+                            padding: 15,
+                            usePointStyle: true,
+                            font: {
+                                size: 12
+                            }
                         }
                     }
                 }
@@ -196,6 +202,7 @@ function initializeCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                aspectRatio: 1,
                 scales: {
                     r: {
                         beginAtZero: true,
@@ -209,8 +216,11 @@ function initializeCharts() {
                     legend: {
                         position: 'bottom',
                         labels: {
-                            padding: 20,
-                            usePointStyle: true
+                            padding: 15,
+                            usePointStyle: true,
+                            font: {
+                                size: 12
+                            }
                         }
                     }
                 }
@@ -472,3 +482,4 @@ document.addEventListener('DOMContentLoaded', function() {
         addActivity('System initialized successfully', 'fa-check-circle');
     }, 1000);
 });
+
