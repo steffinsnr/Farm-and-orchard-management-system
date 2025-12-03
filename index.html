@@ -24,6 +24,7 @@
                 <li><a href="#inventory" class="nav-link">Inventory</a></li>
                 <li><a href="#analytics" class="nav-link">Analytics</a></li>
                 <li><a href="#weather" class="nav-link">Weather</a></li>
+                <li><a href="#admin" class="nav-link">Admin</a></li>
             </ul>
             <div class="nav-toggle">
                 <span class="bar"></span>
@@ -37,8 +38,8 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Transform Your Farm Operations</h1>
-                <p class="hero-subtitle">Comprehensive digital platform for managing, monitoring, and optimizing every aspect of your agricultural operations</p>
+                <h1 class="hero-title" id="hero-title">Transform Your Farm Operations</h1>
+                <p class="hero-subtitle" id="hero-subtitle">Comprehensive digital platform for managing, monitoring, and optimizing every aspect of your agricultural operations</p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="showDashboard()">Get Started</button>
                     <button class="btn btn-secondary" onclick="scrollToFeatures()">Learn More</button>
@@ -152,7 +153,7 @@
                     </div>
                 </div>
 
-                <div class="dashboard-card">
+                <div class="dashboard-card" id="yield-card">
                     <h3>Yield Prediction</h3>
                     <div class="chart-container">
                         <canvas id="yieldChart"></canvas>
@@ -185,6 +186,51 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="dashboard-card">
+                    <h3>Irrigation Schedule</h3>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="status-label">Field A</span>
+                            <span class="status-value healthy">Completed today</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Field B</span>
+                            <span class="status-value warning">Due this evening</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Orchard Block 1</span>
+                            <span class="status-value healthy">Scheduled tomorrow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Upcoming Tasks</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-flask"></i>
+                            <div class="activity-content">
+                                <span class="activity-title">Soil sampling in Field C</span>
+                                <span class="activity-time">Scheduled for tomorrow</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-spray-can"></i>
+                            <div class="activity-content">
+                                <span class="activity-title">Fungicide spray in Apple Orchard</span>
+                                <span class="activity-time">In 2 days</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-people-carry"></i>
+                            <div class="activity-content">
+                                <span class="activity-title">Harvest labor planning for tomatoes</span>
+                                <span class="activity-time">This weekend</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -202,7 +248,7 @@
                     <div class="crop-details">
                         <div class="detail-item">
                             <span class="label">Planting Date:</span>
-                            <span class="value">March 15, 2024</span>
+                            <span class="value">March 15, 2025</span>
                         </div>
                         <div class="detail-item">
                             <span class="label">Growth Stage:</span>
@@ -210,7 +256,7 @@
                         </div>
                         <div class="detail-item">
                             <span class="label">Expected Harvest:</span>
-                            <span class="value">August 20, 2024</span>
+                            <span class="value" id="corn-harvest">August 20, 2025</span>
                         </div>
                         <div class="detail-item">
                             <span class="label">Soil Moisture:</span>
@@ -218,8 +264,8 @@
                         </div>
                     </div>
                     <div class="crop-actions">
-                        <button class="btn btn-small">View Details</button>
-                        <button class="btn btn-small btn-secondary">Add Note</button>
+                        <button class="btn btn-small crop-action-btn" data-action="view-details" data-crop="Corn Field A">View Details</button>
+                        <button class="btn btn-small btn-secondary crop-action-btn" data-action="add-note" data-crop="Corn Field A">Add Note</button>
                     </div>
                 </div>
 
@@ -239,16 +285,16 @@
                         </div>
                         <div class="detail-item">
                             <span class="label">Expected Harvest:</span>
-                            <span class="value">September 15, 2024</span>
+                            <span class="value">September 15, 2025</span>
                         </div>
                         <div class="detail-item">
                             <span class="label">Pest Alert:</span>
-                            <span class="value">Monitor aphids</span>
+                            <span class="value" id="apple-pest-alert">Monitor aphids</span>
                         </div>
                     </div>
                     <div class="crop-actions">
-                        <button class="btn btn-small">View Details</button>
-                        <button class="btn btn-small btn-secondary">Schedule Spray</button>
+                        <button class="btn btn-small crop-action-btn" data-action="view-details" data-crop="Apple Orchard">View Details</button>
+                        <button class="btn btn-small btn-secondary crop-action-btn" data-action="schedule-spray" data-crop="Apple Orchard">Schedule Spray</button>
                     </div>
                 </div>
 
@@ -268,7 +314,7 @@
                         </div>
                         <div class="detail-item">
                             <span class="label">Harvest Started:</span>
-                            <span class="value">June 1, 2024</span>
+                            <span class="value">June 1, 2025</span>
                         </div>
                         <div class="detail-item">
                             <span class="label">Daily Yield:</span>
@@ -276,8 +322,8 @@
                         </div>
                     </div>
                     <div class="crop-actions">
-                        <button class="btn btn-small">View Details</button>
-                        <button class="btn btn-small btn-secondary">Record Harvest</button>
+                        <button class="btn btn-small crop-action-btn" data-action="view-details" data-crop="Tomato Greenhouse">View Details</button>
+                        <button class="btn btn-small btn-secondary crop-action-btn" data-action="record-harvest" data-crop="Tomato Greenhouse">Record Harvest</button>
                     </div>
                 </div>
             </div>
@@ -304,10 +350,10 @@
                         </div>
                         <div class="item-details">
                             <p>Quantity: 15 bags</p>
-                            <p>Last Ordered: March 1, 2024</p>
-                            <p>Next Order Due: July 15, 2024</p>
+                            <p>Last Ordered: March 1, 2025</p>
+                            <p>Next Order Due: July 15, 2025</p>
                         </div>
-                        <button class="btn btn-small">Reorder</button>
+                        <button class="btn btn-small inventory-reorder-btn" data-item="Corn Seeds">Reorder</button>
                     </div>
                     
                     <div class="inventory-item">
@@ -317,10 +363,97 @@
                         </div>
                         <div class="item-details">
                             <p>Quantity: 50 trays</p>
-                            <p>Last Ordered: May 20, 2024</p>
-                            <p>Next Order Due: August 1, 2024</p>
+                            <p>Last Ordered: May 20, 2025</p>
+                            <p>Next Order Due: August 1, 2025</p>
                         </div>
-                        <button class="btn btn-small">Reorder</button>
+                        <button class="btn btn-small inventory-reorder-btn" data-item="Tomato Seedlings">Reorder</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fertilizers" class="inventory-content">
+                <div class="inventory-grid">
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>NPK 17-17-17</h4>
+                            <span class="stock-level good">Good Stock</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Quantity: 120 bags</p>
+                            <p>Last Ordered: February 10, 2025</p>
+                            <p>Next Order Due: June 10, 2025</p>
+                        </div>
+                        <button class="btn btn-small inventory-reorder-btn" data-item="NPK 17-17-17">Reorder</button>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>Organic Compost</h4>
+                            <span class="stock-level low">Low Stock</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Quantity: 30 tons</p>
+                            <p>Last Ordered: January 5, 2025</p>
+                            <p>Next Order Due: April 1, 2025</p>
+                        </div>
+                            <button class="btn btn-small inventory-reorder-btn" data-item="Organic Compost">Reorder</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="equipment" class="inventory-content">
+                <div class="inventory-grid">
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>Tractors</h4>
+                            <span class="stock-level good">Operational</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Units: 3</p>
+                            <p>Next Service: March 30, 2025</p>
+                            <p>Status: All operational</p>
+                        </div>
+                        <button class="btn btn-small equipment-maintenance-btn" data-equipment="Tractors">Log Maintenance</button>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>Irrigation Pumps</h4>
+                            <span class="stock-level low">Check Required</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Units: 5</p>
+                            <p>Next Service: February 15, 2025</p>
+                            <p>Status: 1 pump requires inspection</p>
+                        </div>
+                        <button class="btn btn-small equipment-maintenance-btn" data-equipment="Irrigation Pumps">Log Maintenance</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="supplies" class="inventory-content">
+                <div class="inventory-grid">
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>Packing Crates</h4>
+                            <span class="stock-level good">Good Stock</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Quantity: 450 crates</p>
+                            <p>Last Ordered: January 25, 2025</p>
+                            <p>Next Order Due: May 25, 2025</p>
+                        </div>
+                        <button class="btn btn-small inventory-reorder-btn" data-item="Packing Crates">Reorder</button>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="item-header">
+                            <h4>Harvest Gloves</h4>
+                            <span class="stock-level low">Low Stock</span>
+                        </div>
+                        <div class="item-details">
+                            <p>Quantity: 60 pairs</p>
+                            <p>Last Ordered: December 10, 2024</p>
+                            <p>Next Order Due: February 10, 2025</p>
+                        </div>
+                        <button class="btn btn-small inventory-reorder-btn" data-item="Harvest Gloves">Reorder</button>
                     </div>
                 </div>
             </div>
@@ -332,19 +465,19 @@
         <div class="container">
             <h2 class="section-title">Farm Analytics</h2>
             <div class="analytics-grid">
-                <div class="analytics-card">
+                <div class="analytics-card" id="revenue-card">
                     <h3>Revenue Trends</h3>
                     <div class="chart-container">
                         <canvas id="revenueChart"></canvas>
                     </div>
                 </div>
-                <div class="analytics-card">
+                <div class="analytics-card" id="cost-card">
                     <h3>Cost Analysis</h3>
                     <div class="chart-container">
                         <canvas id="costChart"></canvas>
                     </div>
                 </div>
-                <div class="analytics-card">
+                <div class="analytics-card" id="yield-comparison-card">
                     <h3>Yield Comparison</h3>
                     <div class="chart-container">
                         <canvas id="yieldComparisonChart"></canvas>
@@ -467,7 +600,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>FarmManager Pro</h3>
-                    <p>Comprehensive digital platform for modern agriculture</p>
+                    <p id="footer-tagline">Comprehensive digital platform for modern agriculture</p>
                 </div>
                 <div class="footer-section">
                     <h4>Features</h4>
@@ -488,10 +621,49 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 FarmManager Pro. All rights reserved.</p>
+                <p>&copy; 2025 FarmManager Pro. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Admin Section -->
+    <section id="admin" class="admin-section">
+        <div class="container">
+            <h2 class="section-title">Admin Portal</h2>
+
+            <div id="admin-login">
+                <div class="admin-card">
+                    <h3>Administrator Sign In</h3>
+                    <p>Use the default credentials to manage all farm data and dashboards.</p>
+                    <form id="admin-login-form">
+                        <div class="form-group">
+                            <label for="admin-username">Username</label>
+                            <input type="text" id="admin-username" placeholder="admin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-password">Password</label>
+                            <input type="password" id="admin-password" placeholder="admin123" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                        <p class="admin-hint">Default login: <strong>admin / admin123</strong></p>
+                        <p id="admin-login-error" class="admin-error" style="display:none;">Invalid credentials. Please try again.</p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Admin panel itself now lives in admin.html -->
+        </div>
+    </section>
+
+    <!-- Generic Modal -->
+    <div id="app-modal" class="app-modal" style="display:none;">
+        <div class="app-modal-backdrop"></div>
+        <div class="app-modal-content">
+            <button class="app-modal-close" aria-label="Close" onclick="closeModal()">&times;</button>
+            <h3 id="app-modal-title"></h3>
+            <div id="app-modal-body"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
